@@ -86,7 +86,7 @@ const ModalFriend = React.forwardRef((props, ref) => {
                                     onChange={e => setFriend({ ...friend, fechaDeNacimiento: e.target.value })}>
                                  </input>
                             </div>
-                            <button type="button" class="btn btn-primary mt-5" onClick={() => submit()}>Submit</button>
+                            <button type="button" class="btn btn-primary mt-5" onClick={() => submit()}>{ props.data.friend ? "Acctualizar" : "Agregar" }</button>
                         </form>
                     </div>
                 </div>
