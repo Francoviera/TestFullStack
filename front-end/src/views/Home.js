@@ -1,11 +1,8 @@
 import React, { useEffect, useState } from 'react'
-// import { Redirect } from "react-router"
 import FriendList from "../components/listFriends"
 import ModalFriend from "../components/ModalFriend"
-
 import {DragDropContext, Droppable, } from "react-beautiful-dnd"
 
-import Header from "../components/Header"
 
 
 
@@ -28,7 +25,6 @@ const Home = ({match}) => {
         listGuests: []
     })
     useEffect(  () => { 
-        console.log("LISTADO", listItems)
     }, [listItems]);
 
     useEffect( async () => { 
@@ -48,7 +44,6 @@ const Home = ({match}) => {
             fetch(process.env.REACT_APP_BE_URL + '/friends', requestOptions)
             .then(res => res.json())
             .then(json => {
-                console.log("CUMPLEAÑOS", birthday)
                 let result= [];
                 if(birthday?.friends?.length > 0) {
                     json.map(friend => {
@@ -64,7 +59,6 @@ const Home = ({match}) => {
                 setLoading(false);
               })
         }) 
-        console.log("LISTADO", listItems)
     }, []);
 
     const submit = async () => {
@@ -87,25 +81,20 @@ const Home = ({match}) => {
             redirect: 'follow',
             body: data,
         };
-        console.log(data)
         await fetch(process.env.REACT_APP_BE_URL + '/birthday', requestOptions)
           .then(res => res.json())
           .then(json => {
-              console.log(json)
             setLoading(false);
             let msj= birthday?.friends ? "Lista Actualizada" : "Lista Creada";
             alert(msj)
-            // window.location.reload();
           })
     }
 
     const moveFriend = (event) => {
-
         if(event.source.droppableId && event.destination.droppableId){
             let item= listItems[event.source.droppableId][event.source.index];
             listItems[event.source.droppableId].splice(event.source.index, 1);
             listItems[event.destination.droppableId].push(item);
-
         }else{
             alert("No suelte el elemento fuera del rango");
         }
@@ -120,10 +109,6 @@ const Home = ({match}) => {
             headers: myHeaders,
             redirect: 'follow',
         };
-        console.log(friend)
-        console.log(list)
-
-        console.log(index)
         await fetch(process.env.REACT_APP_BE_URL + '/friends/'+friend.id, requestOptions)
           .then(res => res.json())
           .then(json => {  
@@ -147,15 +132,10 @@ const Home = ({match}) => {
         setIsModalFriend(true);
     }
 
-    useEffect(() => { 
-        // setMyRef(React.createRef();
-    }, []);
-
     return (
         <>
             { loading ?
                 "Loading..."
-                
                 : 
                 <div class="container">
                     <div class="row">

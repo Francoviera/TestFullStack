@@ -1,7 +1,4 @@
 import React, { useEffect, useState } from 'react'
-// import { Redirect } from "react-router"
-
-
 
 const ModalFriend = React.forwardRef((props, ref) => {
 
@@ -34,7 +31,6 @@ const ModalFriend = React.forwardRef((props, ref) => {
             redirect: 'follow',
             body: data,
         };
-        console.log(requestOptions)
         await fetch(process.env.REACT_APP_BE_URL + '/friends', requestOptions)
           .then(res => res.json())
           .then(json => {
