@@ -7,6 +7,38 @@
   pointer-events: none;
 }
 
+.btns-abm{
+  display: none;
+  /* float: right !important; */
+}
+.list-friends{
+  display: none;
+  /* float: right !important; */
+}
+.btns-abm a{
+  margin-right: 6%;
+}
+.btns-abm p{
+  margin-bottom: 2%;
+}
+.friend:hover .btns-abm{
+  /* .btns-abm{ */
+      display: block;
+  
+  /* } */
+}
+.birthday:hover .list-friends{
+  /* .btns-abm{ */
+      display: block;
+  
+  /* } */
+}
+.margin-auto{ 
+  margin-right: auto;
+  margin-left: auto;
+}
+
+
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
     animation: App-logo-spin infinite 20s linear;
@@ -28,9 +60,6 @@
   color: #61dafb;
 }
 
-.icon-trash{
-  float: right !important;
-}
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);
